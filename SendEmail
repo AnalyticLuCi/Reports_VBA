@@ -1,0 +1,48 @@
+Sub Send_Email()
+
+Dim OutApp, OutMail As Object
+Dim Filepath, Imgpath, ImgName, Recipients, CCRec, BCCRec As String
+Dim TempFilePath As String
+
+Set OutApp = CreateObject("Outlook.Application")
+Set OutMail = OutApp.CreateItem(olMailItem)
+
+Filepath = Application.ActiveWorkbook.FullName
+ImgName = "PSHR Overall - " & Format(Date, "mmddyyyy") & ".png"
+Imgpath = Application.ActiveWorkbook.Path & "\" & ImgName
+Recipients = "email of recipient"
+CCRec = ""
+BCCRec = ""
+
+With OutMail
+    .To = Recipients
+    .SentOnBehalfOfName = ""
+    .Cc = ""
+    .BCC = ""
+    .Subject = "Email Subject" & Format(Now(), "mmddyyyy")
+    
+    Call CreatePNG
+    TempFilePath = Environ$("temp") & "\IMG.png"
+    .Attachments.Add TempFilePath, olByValue, 0
+    
+    .Attachments.Add Filepath
+    .HTMLBody = "<html>Hello,<br><br>" & _
+            "Attached is the POS & SO Historical Performance Report as of " & Format(Now, "mmm dd, yyyy h:mm AMPM") & "." & _
+            "<br><br>" & _
+            "<img src='cid:IMG.png' width='600'>" & _
+            "<br><br>Regards,<br>" & _
+            "<B>Sales & Data Intelligence</B><br><br>"
+    .Send
+End With
+
+On Error GoTo 0
+
+'            "<img src='cid:PSHR Overall - 01232019.png'>" & _
+'            "<img src='cid:" & ImgName & "'" & _
+
+Set OutMail = Nothing
+Set OutApp = Nothing
+
+ActiveWorkbook.Save
+
+End Sub
