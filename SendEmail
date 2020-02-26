@@ -7,9 +7,9 @@ Dim TempFilePath As String
 Set OutApp = CreateObject("Outlook.Application")
 Set OutMail = OutApp.CreateItem(olMailItem)
 
-Filepath = Application.ActiveWorkbook.FullName
+Filepath = ActiveWorkbook.FullName
 ImgName = "ImageName" & ".png"
-Imgpath = Application.ActiveWorkbook.Path & "\" & ImgName
+Imgpath = ActiveWorkbook.Path & "\" & ImgName
 
 With OutMail
     .To = ""
