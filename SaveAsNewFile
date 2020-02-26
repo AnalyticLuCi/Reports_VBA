@@ -1,0 +1,13 @@
+Sub SaveFile()
+Worksheets(Array("Sheet 1", "Sheet 2")).Copy
+ActiveWorkbook.SaveAs Filename:="C:\Users\Glenn Dalida\Desktop\Payments\Cashalo Daily Merchant Transaction Report Non-RRHI " & Format(Now, "MMDDYYYY") & ".xlsx"
+Application.DisplayAlerts = False
+ActiveWorkbook.Close Savechanges:=True
+End Sub
+
+Sub SaveCSV()
+Worksheets("Sheet 1").Copy
+ActiveWorkbook.SaveAs "C:\Users\Glenn Dalida\Desktop\Payments\Cashalo Daily Merchant Transaction Report Non-RRHI " & Format(Now, "MMDDYYYY") & ".csv", xlCSV
+Application.DisplayAlerts = False
+ActiveWorkbook.Close Savechanges:=True
+End Sub
