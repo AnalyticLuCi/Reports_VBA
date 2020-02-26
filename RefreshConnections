@@ -9,7 +9,8 @@ With ActiveWorkbook.
   Connections("Query - Query 2").Refresh
 end with
 
-Sheets("Sheet 1").PivotTables("PivotTable1").PivotCache.Refresh
+ActiveSheet.PivotTables("PivotTable1").PivotCache.Refresh
+ActiveSheet.PivotTables("PivotTable2").RefreshTable
 Application.Calculation = xlAutomatic
 
 End Sub
