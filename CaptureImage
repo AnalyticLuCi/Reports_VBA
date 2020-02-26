@@ -10,8 +10,8 @@ Sub GenerateImage()
     With ActiveSheet.ChartObjects.Add(Capture.Left, Capture.Top, Capture.Width, Capture.Height)
         .Activate
         .Chart.Paste
-        .Chart.Export FilePath & "ReportImage.png" -- save as image file
-        .Chart.Export Environ$("temp") & "\" & "IMG" & ".png", "PNG" -- import within workbook
+        .Chart.Export FilePath & "ReportImage.png" 'save as image file
+        .Chart.Export Environ$("temp") & "\" & "IMG" & ".png", "PNG" 'import within workbook
     End With
     ActiveSheet.ChartObjects(ActiveSheet.ChartObjects.Count).Delete
     Set Capture = Nothing
