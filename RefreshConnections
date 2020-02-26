@@ -1,0 +1,12 @@
+Sub Refresh_Data()
+
+With ActiveWorkbook.
+  Connections("Connection 1").Refresh
+  Connections("Connection 2").Refresh
+  Connections("Query - Query 1").Refresh
+  Connections("Query - Query 2").Refresh
+end with
+
+Sheets("Sheet 1").PivotTables("PivotTable1").PivotCache.Refresh
+
+End Sub
