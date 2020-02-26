@@ -16,5 +16,9 @@ Sub Restrict_Action()
 End Sub
 
 Private Sub Workbook_BeforeSave(ByVal SaveAsUI As Boolean, Cancel As Boolean)
-    'Run action before save
+    'Run action on activeworkbook save
+End Sub
+
+Private Sub Workbook_Open()
+    'Run action on workbook open
 End Sub
