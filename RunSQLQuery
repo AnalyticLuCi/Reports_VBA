@@ -1,0 +1,26 @@
+Sub Run_Query()
+
+    Dim Server_Name, Database_Name, User_ID, Password, Driver_Name, SQL As String
+        
+    Set rs = CreateObject("ADODB.Recordset")
+    Server_Name = ""
+    Database_Name = ""
+    User_ID = ""
+    Password = ""
+    Driver_Name = ""
+
+    Set cn = CreateObject("ADODB.Connection")
+    cn.Open "Driver = " & Driver_Name & _
+      ";Server=" & Server_Name & _
+      ";Database=" & Database_Name & _
+      ";Uid=" & User_ID & _
+      ";Pwd=" & Password & ";"
+    SQL = "Select * from Table"
+
+    rs.Open SQL, Cn
+
+    Set rs = Nothing
+    Cn.Close
+    Set Cn = Nothing
+
+End Sub
