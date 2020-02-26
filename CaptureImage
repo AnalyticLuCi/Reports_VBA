@@ -1,20 +1,18 @@
 Sub GenerateImage()
 
-    Worksheets("Dashboard").Activate
-    Sheets("Dashboard").Select
-    Range("A1").Select
-    Set Capture = ActiveWorkbook.Worksheets("Dashboard").Range("A1:R120")  
+    Dim Capture as Range
+    Dim Filepath as String
+
+    Set Capture = ActiveSheet.Range("A1:R120")
+    Filepath = ActiveWorkbook.Path & "\"
     
     Capture.CopyPicture
-    With ActiveWorkbook.Worksheets("Dashboard").ChartObjects.Add(Capture.Left, Capture.Top, Capture.Width, Capture.Height)
+    With ActiveSheet.ChartObjects.Add(Capture.Left, Capture.Top, Capture.Width, Capture.Height)
         .Activate
         .Chart.Paste
-        .Chart.Export "C:\Users\Glenn Dalida\Desktop\intraday\intraday.PNG"
+        .Chart.Export FilePath & "ReportImage.png"
     End With
-    Worksheets("Dashboard").ChartObjects(Worksheets("Dashboard").ChartObjects.Count).Delete
+    ActiveSheet.ChartObjects(ActiveSheet.ChartObjects.Count).Delete
     Set Capture = Nothing
-    
-    Sheets("Dashboard").Select
-    Range("A1").Select
     
 End Sub
