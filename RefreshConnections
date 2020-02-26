@@ -1,5 +1,7 @@
 Sub Refresh_Data()
 
+Application.Calculation = xlManual
+
 With ActiveWorkbook.
   Connections("Connection 1").Refresh
   Connections("Connection 2").Refresh
@@ -8,5 +10,6 @@ With ActiveWorkbook.
 end with
 
 Sheets("Sheet 1").PivotTables("PivotTable1").PivotCache.Refresh
+Application.Calculation = xlAutomatic
 
 End Sub
