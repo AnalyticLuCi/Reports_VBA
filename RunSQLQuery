@@ -1,6 +1,8 @@
 Sub Run_Query()
 
-    Dim Server_Name, Database_Name, User_ID, Password, Driver_Name, SQL As String
+    Dim Server_Name, Database_Name, User_ID, Password, Driver_Name, SQLA, SQLB As String
+    Dim OutputArray()
+    Dim OutputValue as String
         
     Set rs = CreateObject("ADODB.Recordset")
     Server_Name = ""
@@ -15,9 +17,14 @@ Sub Run_Query()
       ";Database=" & Database_Name & _
       ";Uid=" & User_ID & _
       ";Pwd=" & Password & ";"
-    SQL = "Select * from Table"
 
-    rs.Open SQL, Cn
+    SQLA = "Select * from Table"
+    rs.Open SQLA, Cn
+
+    SQLB = "Select max(col) from Table"
+    rs.Open SQLB, Cn
+    OutputArray = rs.GetRows()
+    OutputValue = OutputArray(0,0)
 
     Set rs = Nothing
     Cn.Close
