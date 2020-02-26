@@ -7,7 +7,7 @@ End Sub
 
 Sub SaveCSV()
   Worksheets("Sheet 1").Copy
-  ActiveWorkbook.SaveAs Filename:= ActiveWorkbook.Path & "FileName" & Format(Now, "MMDDYYYY") & ".csv", xlCSV
+  ActiveWorkbook.SaveAs ActiveWorkbook.Path & "FileName" & Format(Now, "MMDDYYYY") & ".csv", xlCSV
   Application.DisplayAlerts = False
   ActiveWorkbook.Close Savechanges:=True
 End Sub
