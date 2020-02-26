@@ -1,0 +1,9 @@
+Sub User_Confirm()
+
+    If MsgBox("Confirm action?", vbYesNo + vbQuestion) = vbYes Then
+        Call ActionSub
+    Else:
+        Exit Sub
+    End If
+
+End Sub
