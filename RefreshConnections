@@ -9,8 +9,8 @@ With ActiveWorkbook.
   Connections("Query - Query 2").Refresh
 end with
 
-ActiveSheet.PivotTables("PivotTable1").PivotCache.Refresh
-ActiveSheet.PivotTables("PivotTable2").RefreshTable
+ActiveSheet.PivotTables("PivotTable1").PivotCache.Refresh 'refreshes all PT of same source
+ActiveSheet.PivotTables("PivotTable2").RefreshTable 'for specific PT only
 Application.Calculation = xlAutomatic
 
 End Sub
